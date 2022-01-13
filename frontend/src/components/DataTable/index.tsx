@@ -52,7 +52,7 @@ function DataTable() {
                                 <td>{item.seller.name}</td>
                                 <td>{item.visited}</td>
                                 <td>{item.deals}</td>
-                                <td>{toMoeda(item.amount)}</td>
+                                <td>{`R$ ${toMoeda(item.amount)}`}</td>
                             </tr>
                         ))}
                     </tbody>
