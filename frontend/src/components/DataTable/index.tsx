@@ -5,9 +5,11 @@ import { SalePage } from "types/sale";
 import { formatLocalDate } from "utils/format";
 import { BASE_URL } from "utils/requests";
 
-function pilu(){
-    console.log('teste')
-}
+function toMoeda(valor: number){
+    let valorConvertido = (parseFloat(valor.toFixed(2)).toLocaleString('pt-BR'))
+    let valorFinal = valorConvertido.indexOf(',') == -1 ? valorConvertido.concat(',00') : valorConvertido
+    valorFinal = (valorFinal.length - (valorFinal.indexOf(',') + 1)) == 2 ? valorFinal : valorFinal.concat('0')
+    return valorFinal }
 
 function DataTable() {
     const [activePage, setActivePage] = useState(0);
@@ -50,7 +52,7 @@ function DataTable() {
                                 <td>{item.seller.name}</td>
                                 <td>{item.visited}</td>
                                 <td>{item.deals}</td>
-                                <td onClick={() => pilu()}>{item.amount.toFixed(2)}</td>
+                                <td>{toMoeda(item.amount)}</td>
                             </tr>
                         ))}
                     </tbody>
